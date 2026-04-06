@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "WebFetch(domain:www.charles-cheng.com)",
+      "Bash(npm create:*)",
+      "Bash(find /Users/kiiro/Desktop/kiiro-blog -name *.jpg -o -name *.png -o -name *.jpeg -o -name *.webp -o -name *.avif)",
+      "Bash(npm run:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

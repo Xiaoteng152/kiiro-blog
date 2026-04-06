@@ -1,0 +1,140 @@
+---
+import PageLayout from '../layouts/PageLayout.astro'
+
+const skills = [
+  { category: "前端框架 & 工具", items: ["React", "Next.js", "Astro", "Tailwind CSS", "TypeScript"] },
+  { category: "低代码 & 平台", items: ["低代码平台", "CRM 系统", "微信小程序"] },
+  { category: "AI & 大模型", items: ["LLM 集成", "AI 对话产品", "医疗 AI", "Chat 化产品"] },
+  { category: "工程 & 工具", items: ["Git", "Node.js", "Webpack", "Vite", "Linux"] },
+]
+
+const timeline = [
+  {
+    period: "2026.01 - 至今",
+    company: "腾讯音乐娱乐",
+    companyUrl: "https://www.tencentmusic.com",
+    favicon: "https://www.tencentmusic.com/favicon.ico",
+    role: "前端研发工程师",
+    tags: ["旗下 App 研发", "AI 结合业务"],
+    desc: "负责腾讯音乐旗下 App 的前端研发，深度参与 AI 与音乐业务的结合与落地。",
+  },
+  {
+    period: "2025.06 - 2026.01",
+    company: "字节跳动",
+    companyUrl: "https://www.bytedance.com",
+    favicon: "https://www.bytedance.com/favicon.ico",
+    role: "前端研发工程师（搜索业务）",
+    tags: ["AI 小程序", "百万级 DAU", "医疗 AI", "商业化"],
+    desc: "负责搜索业务 AI 小程序研发，产品为百万级 DAU AI 对话类产品，结合大模型提供咨询、用药、找医院、购药等服务；独立负责商业化模块；参与 Chat 化 AI 医疗网站研发，解决医疗工作者基本医疗知识查询和文献查找，获得 40+ 专业医生内部好评。",
+  },
+  {
+    period: "2024.12 - 2025.04",
+    company: "滴滴出行",
+    companyUrl: "https://www.didiglobal.com",
+    favicon: "https://www.didiglobal.com/favicon.ico",
+    role: "前端研发实习（网约车乘客业务）",
+    tags: ["乘客端工作台", "CRM 系统", "券商城", "低代码平台"],
+    desc: "负责乘客端工作台研发，参与网约车 CRM 系统、券商城平台、低代码平台的维护与迭代。",
+  },
+]
+---
+
+<PageLayout title="关于 - kiiro's blog" description="关于我 - 前端研发工程师">
+  <div class="pt-6">
+    <!-- Avatar + Bio -->
+    <div class="flex items-start gap-5 mb-10">
+      <div class="w-16 h-16 rounded-full overflow-hidden shrink-0">
+        <img src="/images/avatar.jpg" alt="Kiiro" class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <h1 class="text-2xl font-bold mb-0.5" style="color: var(--color-text)">Kiiro <span class="text-base font-normal" style="color: var(--color-muted)">キイロ</span></h1>
+        <p class="text-sm mb-3" style="color: var(--color-muted)">前端研发工程师 @ 腾讯音乐</p>
+        <div class="flex gap-3 text-sm">
+          <a href="https://github.com/Xiaoteng152" target="_blank" rel="noopener" class="no-underline hover:opacity-70" style="color: var(--color-muted)">GitHub</a>
+          <a href="https://x.com/tengg886" target="_blank" rel="noopener" class="no-underline hover:opacity-70" style="color: var(--color-muted)">Twitter</a>
+          <a href="mailto:hello@example.com" class="no-underline hover:opacity-70" style="color: var(--color-muted)">邮件</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="mb-10">
+      <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text)">关于我</h2>
+      <div class="space-y-3 text-sm leading-7" style="color: var(--color-muted)">
+        <p>
+          你好！我是 Kiiro（キイロ），日文里「黄色」的读音，温暖而明亮，大概也挺符合我自己的性格。
+          目前在腾讯音乐做前端研发，此前在字节跳动、滴滴都留下过足迹。
+        </p>
+        <p>
+          我的人生目标很简单——尽早找到真正热爱的事情，追寻自由和幸福。这个博客是我记录技术探索、项目经历和日常思考的地方，也是那条路上的一点痕迹。
+        </p>
+      </div>
+    </section>
+
+    <hr style="border-color: var(--color-border)" class="mb-8" />
+
+    <!-- Timeline -->
+    <section class="mb-10">
+      <h2 class="text-lg font-semibold mb-6" style="color: var(--color-text)">工作经历</h2>
+      <div class="space-y-6">
+        {timeline.map(item => (
+          <div class="flex gap-4">
+            <!-- Company Icon -->
+            <div class="shrink-0 mt-1">
+              <a href={item.companyUrl} target="_blank" rel="noopener">
+                <img
+                  src={item.favicon}
+                  alt={item.company}
+                  width="20"
+                  height="20"
+                  class="w-5 h-5 rounded"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="hidden w-5 h-5 rounded items-center justify-center text-xs font-bold text-white" style="background-color: var(--color-accent); display: none;">
+                  {item.company[0]}
+                </div>
+              </a>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-1">
+                <h3 class="font-medium text-sm" style="color: var(--color-text)">{item.role}</h3>
+                <a href={item.companyUrl} target="_blank" rel="noopener" class="text-xs no-underline hover:opacity-70" style="color: var(--color-accent)">{item.company}</a>
+              </div>
+              <p class="text-xs mb-2" style="color: var(--color-muted)">{item.period}</p>
+              <div class="flex flex-wrap gap-1.5 mb-2">
+                {item.tags.map(tag => (
+                  <span class="px-2 py-0.5 rounded-full text-xs" style="background-color: var(--color-border); color: var(--color-muted)">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p class="text-sm leading-6" style="color: var(--color-muted)">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr style="border-color: var(--color-border)" class="mb-8" />
+
+    <!-- Skills -->
+    <section>
+      <h2 class="text-lg font-semibold mb-5" style="color: var(--color-text)">技术栈</h2>
+      <div class="grid gap-5">
+        {skills.map(group => (
+          <div>
+            <h3 class="text-xs font-medium uppercase tracking-wider mb-2" style="color: var(--color-muted)">{group.category}</h3>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map(skill => (
+                <span class="px-3 py-1 rounded-lg text-sm" style="background-color: var(--color-border); color: var(--color-text)">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</PageLayout>

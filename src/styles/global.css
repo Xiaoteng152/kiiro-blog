@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #0f172a;
+    --color-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-accent: #6366f1;
+  }
+
+  .dark {
+    --color-bg: #0f172a;
+    --color-text: #f1f5f9;
+    --color-muted: #94a3b8;
+    --color-border: #1e293b;
+    --color-accent: #818cf8;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    @apply font-sans antialiased transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  a {
+    color: var(--color-accent);
+    @apply transition-opacity duration-200 hover:opacity-70;
+  }
+
+  /* Prose styles for blog posts */
+  .prose h2 {
+    @apply text-2xl mt-10 mb-4;
+    color: var(--color-text);
+  }
+  .prose h3 {
+    @apply text-xl mt-8 mb-3;
+    color: var(--color-text);
+  }
+  .prose p {
+    @apply leading-7 mb-5;
+    color: var(--color-text);
+  }
+  .prose ul {
+    @apply list-disc pl-6 mb-5 space-y-1;
+  }
+  .prose ol {
+    @apply list-decimal pl-6 mb-5 space-y-1;
+  }
+  .prose code {
+    @apply text-sm px-1.5 py-0.5 rounded font-mono;
+    background-color: var(--color-border);
+    color: var(--color-accent);
+  }
+  .prose pre {
+    @apply rounded-xl p-5 overflow-x-auto mb-5 text-sm;
+    background-color: #1e293b;
+    color: #e2e8f0;
+  }
+  .prose pre code {
+    @apply bg-transparent text-inherit p-0;
+  }
+  .prose blockquote {
+    @apply border-l-4 pl-4 italic my-5;
+    border-color: var(--color-accent);
+    color: var(--color-muted);
+  }
+  .prose hr {
+    @apply my-8;
+    border-color: var(--color-border);
+  }
+  .prose a {
+    @apply underline underline-offset-2;
+  }
+  .prose img {
+    @apply rounded-xl my-6 w-full;
+  }
+  .prose strong {
+    color: var(--color-text);
+    @apply font-semibold;
+  }
+}
