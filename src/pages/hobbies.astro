@@ -7,18 +7,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 ---
 
 <PageLayout title="爱好 - kiiro's blog" description="阅读、思考、生活方式的记录">
-  <div class="pt-6 pb-4">
+  <div class="pt-6 pb-4" data-reveal>
     <h1 class="text-3xl font-bold mb-2" style="color: var(--color-text)">爱好</h1>
     <p class="text-sm" style="color: var(--color-muted)">阅读、健身、思考，以及一切让我感到活着的事</p>
   </div>
 
   <ul class="space-y-1 mt-2">
-    {posts.map(post => (
-      <li>
+    {posts.map((post, i) => (
+      <li data-reveal style={`--reveal-delay:${i * 70}ms`}>
         <a href={`/blog/${post.id}`} class="group block no-underline">
-          <article class="py-5" style="border-bottom: 1px solid var(--color-border)">
+          <article class="post-row py-5" style="border-bottom: 1px solid var(--color-border)">
             <div class="flex items-start justify-between gap-4 mb-2">
-              <h2 class="font-semibold text-base group-hover:opacity-70 transition-opacity" style="color: var(--color-text)">
+              <h2 class="font-semibold text-base transition-colors" style="color: var(--color-text)">
                 {post.data.title}
               </h2>
               <time class="text-xs shrink-0 mt-1" style="color: var(--color-muted)">

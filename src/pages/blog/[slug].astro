@@ -18,10 +18,10 @@ const { Content } = await render(post)
 <PageLayout title={`${post.data.title} - kiiro's blog`} description={post.data.description}>
   <article class="pt-6">
     <!-- Header -->
-    <header class="mb-8">
+    <header class="mb-8" data-reveal>
       <div class="flex flex-wrap gap-1.5 mb-4">
         {post.data.tags.map(tag => (
-          <a href={`/blog?tag=${tag}`} class="px-2 py-0.5 rounded-full text-xs no-underline" style="background-color: var(--color-border); color: var(--color-muted)">
+          <a href={`/blog?tag=${tag}`} class="tag-chip px-2 py-0.5 rounded-full text-xs no-underline" style="background-color: var(--color-border); color: var(--color-muted)">
             {tag}
           </a>
         ))}
@@ -31,6 +31,7 @@ const { Content } = await render(post)
       </h1>
       <p class="text-base mb-4" style="color: var(--color-muted)">{post.data.description}</p>
       <div class="flex items-center gap-3 text-sm" style="color: var(--color-muted); border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem">
+        <span class="inline-block w-1.5 h-1.5 rounded-full" style="background-color: var(--color-accent)"></span>
         <time>
           {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
@@ -38,13 +39,13 @@ const { Content } = await render(post)
     </header>
 
     <!-- Content -->
-    <div class="prose">
+    <div class="prose" data-reveal style="--reveal-delay:120ms">
       <Content />
     </div>
 
     <!-- Back -->
     <div class="mt-12 pt-6" style="border-top: 1px solid var(--color-border)">
-      <a href="/blog" class="text-sm no-underline hover:opacity-70" style="color: var(--color-muted)">
+      <a href="/blog" class="link-soft text-sm no-underline inline-flex items-center gap-1" style="color: var(--color-accent-strong)">
         ← 返回博客列表
       </a>
     </div>

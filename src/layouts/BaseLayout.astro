@@ -25,15 +25,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <meta property="og:url" content={canonicalURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
-    <script is:inline>
-      // 初始化暗色模式（避免闪烁）
-      const theme = localStorage.getItem('theme')
-      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      }
-    </script>
   </head>
   <body>
+    <!-- 背景光晕 -->
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="glow-orb glow-orb--1"></span>
+      <span class="glow-orb glow-orb--2"></span>
+      <span class="glow-orb glow-orb--3"></span>
+    </div>
+
     <slot />
+
+    <script is:inline>
+      // 滚动入场：进入视口时淡入上移
+      const reveal = () => {
+        const els = document.querySelectorAll('[data-reveal]')
+        if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          els.forEach((el) => el.classList.add('is-visible'))
+          return
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible')
+                io.unobserve(entry.target)
+              }
+            })
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        )
+        els.forEach((el) => io.observe(el))
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', reveal)
+      } else {
+        reveal()
+      }
+    </script>
   </body>
 </html>

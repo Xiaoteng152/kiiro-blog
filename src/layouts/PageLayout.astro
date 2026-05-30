@@ -13,7 +13,7 @@ const { title, description, image } = Astro.props
 ---
 
 <BaseLayout title={title} description={description} image={image}>
-  <div class="min-h-screen flex flex-col" style="background-color: var(--color-bg)">
+  <div class="relative z-10 min-h-screen flex flex-col">
     <Navbar />
     <main class="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <slot />

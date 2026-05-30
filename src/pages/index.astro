@@ -6,13 +6,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 ---
 
-<PageLayout title="首页 - kiiro's blog">
+<PageLayout title="首页 - Kiiro's blog">
   <!-- Hero -->
   <section class="pt-10 pb-14">
-    <div class="flex items-center justify-between gap-3 mb-6">
+    <div class="flex items-center justify-between gap-3 mb-6" data-reveal>
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
-          <img src="/images/avatar.jpg" alt="Kiiro" class="w-full h-full object-cover" />
+        <div class="avatar-ring avatar-float w-14 h-14 shrink-0">
+          <img src="/images/avatar.webp" alt="Kiiro" class="w-full h-full object-cover" />
         </div>
         <div>
           <p class="text-sm" style="color: var(--color-muted)">你好，我是</p>
@@ -23,21 +23,21 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="flex items-center gap-3">
         <!-- GitHub -->
         <a href="https://github.com/Xiaoteng152" target="_blank" rel="noopener" aria-label="GitHub"
-          class="no-underline hover:opacity-70 transition-opacity" style="color: var(--color-muted)">
+          class="link-soft no-underline" style="color: var(--color-muted)">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
           </svg>
         </a>
         <!-- Twitter / X -->
         <a href="https://x.com/tengg886" target="_blank" rel="noopener" aria-label="Twitter"
-          class="no-underline hover:opacity-70 transition-opacity" style="color: var(--color-muted)">
+          class="link-soft no-underline" style="color: var(--color-muted)">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>
         <!-- WeChat -->
         <button id="wechat-btn" aria-label="微信"
-          class="hover:opacity-70 transition-opacity cursor-pointer" style="color: var(--color-muted); background: transparent; border: none; padding: 0; line-height: 0;">
+          class="link-soft cursor-pointer" style="color: var(--color-muted); background: transparent; border: none; padding: 0; line-height: 0;">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-3.895-6.348-7.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.11.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-7.063-6.122zm-3.494 3.025c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.981 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
           </svg>
@@ -77,18 +77,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       })
     </script>
 
-    <h2 class="text-3xl sm:text-4xl font-bold leading-tight mb-4" style="color: var(--color-text)">
-      前端研发 × AI 产品，<br />
-      <span style="color: var(--color-accent)">追寻自由与热爱</span>
+    <h2 class="text-3xl sm:text-4xl font-bold leading-tight mb-4" style="color: var(--color-text); --reveal-delay:80ms" data-reveal>
+      前端研发 × agent 探索<br />
+      <span class="gradient-text">find freedom maybe</span>
     </h2>
-    <p class="text-base leading-7 mb-8 max-w-xl" style="color: var(--color-muted)">
-      Kiiro，日文「キイロ」，黄色的读音，比较符合我自己的性格。希望尽早找到真正热爱的事，过自由而幸福的生活。热爱健身，阅读，目前在学习 web3 和 ai，这里是我记录技术与思考的地方，欢迎交流。
+    <p class="text-base leading-7 mb-8 max-w-xl" style="color: var(--color-muted); --reveal-delay:160ms" data-reveal>
+      Kiiro，日文「キイロ」，黄色的读音，比较符合我自己的性格。希望尽早找到真正热爱的事.喜欢探索新鲜事物，目前在学习ai，这里是我记录技术与思考的地方，欢迎交流。
     </p>
-    <div class="flex flex-wrap gap-3">
-      <a href="/blog" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-white no-underline hover:opacity-90 transition-opacity" style="background-color: var(--color-accent)">
+    <div class="flex flex-wrap gap-3" data-reveal style="--reveal-delay:240ms">
+      <a href="/blog" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold no-underline">
         阅读博客 →
       </a>
-      <a href="/about" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium no-underline hover:opacity-90 transition-opacity" style="border: 1px solid var(--color-border); color: var(--color-text)">
+      <a href="/about" class="btn-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium no-underline">
         关于我
       </a>
     </div>
@@ -99,18 +99,18 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
   <!-- Recent Posts -->
   <section class="pt-10">
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center justify-between mb-6" data-reveal>
       <h3 class="text-lg font-semibold" style="color: var(--color-text)">文章</h3>
-      <a href="/blog" class="text-sm no-underline hover:opacity-70" style="color: var(--color-accent)">查看全部 →</a>
+      <a href="/blog" class="link-soft text-sm no-underline" style="color: var(--color-accent-strong)">查看全部 →</a>
     </div>
 
     <ul class="space-y-1">
-      {posts.map(post => (
-        <li>
+      {posts.map((post, i) => (
+        <li data-reveal style={`--reveal-delay:${i * 70}ms`}>
           <a href={`/blog/${post.id}`} class="group block no-underline">
-            <article class="flex items-start justify-between gap-4 py-4" style="border-bottom: 1px solid var(--color-border)">
+            <article class="post-row flex items-start justify-between gap-4 py-4" style="border-bottom: 1px solid var(--color-border)">
               <div class="flex-1 min-w-0">
-                <h4 class="font-medium mb-1 group-hover:opacity-70 transition-opacity" style="color: var(--color-text)">
+                <h4 class="font-medium mb-1 transition-colors" style="color: var(--color-text)">
                   {post.data.title}
                 </h4>
                 <p class="text-sm line-clamp-1" style="color: var(--color-muted)">

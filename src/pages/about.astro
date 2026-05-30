@@ -42,23 +42,23 @@ const timeline = [
 <PageLayout title="关于 - kiiro's blog" description="关于我 - 前端研发工程师">
   <div class="pt-6">
     <!-- Avatar + Bio -->
-    <div class="flex items-start gap-5 mb-10">
-      <div class="w-16 h-16 rounded-full overflow-hidden shrink-0">
-        <img src="/images/avatar.jpg" alt="Kiiro" class="w-full h-full object-cover" />
+    <div class="flex items-start gap-5 mb-10" data-reveal>
+      <div class="avatar-ring avatar-float w-16 h-16 shrink-0">
+        <img src="/images/avatar.webp" alt="Kiiro" class="w-full h-full object-cover" />
       </div>
       <div>
         <h1 class="text-2xl font-bold mb-0.5" style="color: var(--color-text)">Kiiro <span class="text-base font-normal" style="color: var(--color-muted)">キイロ</span></h1>
         <p class="text-sm mb-3" style="color: var(--color-muted)">前端研发工程师 @ 腾讯音乐</p>
         <div class="flex gap-3 text-sm">
-          <a href="https://github.com/Xiaoteng152" target="_blank" rel="noopener" class="no-underline hover:opacity-70" style="color: var(--color-muted)">GitHub</a>
-          <a href="https://x.com/tengg886" target="_blank" rel="noopener" class="no-underline hover:opacity-70" style="color: var(--color-muted)">Twitter</a>
-          <a href="mailto:hello@example.com" class="no-underline hover:opacity-70" style="color: var(--color-muted)">邮件</a>
+          <a href="https://github.com/Xiaoteng152" target="_blank" rel="noopener" class="link-soft no-underline" style="color: var(--color-muted)">GitHub</a>
+          <a href="https://x.com/tengg886" target="_blank" rel="noopener" class="link-soft no-underline" style="color: var(--color-muted)">Twitter</a>
+          <a href="mailto:hello@example.com" class="link-soft no-underline" style="color: var(--color-muted)">邮件</a>
         </div>
       </div>
     </div>
 
     <!-- About -->
-    <section class="mb-10">
+    <section class="mb-10" data-reveal>
       <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text)">关于我</h2>
       <div class="space-y-3 text-sm leading-7" style="color: var(--color-muted)">
         <p>
@@ -74,11 +74,11 @@ const timeline = [
     <hr style="border-color: var(--color-border)" class="mb-8" />
 
     <!-- Timeline -->
-    <section class="mb-10">
+    <section class="mb-10" data-reveal>
       <h2 class="text-lg font-semibold mb-6" style="color: var(--color-text)">工作经历</h2>
       <div class="space-y-6">
-        {timeline.map(item => (
-          <div class="flex gap-4">
+        {timeline.map((item, i) => (
+          <div class="flex gap-4" data-reveal style={`--reveal-delay:${i * 90}ms`}>
             <!-- Company Icon -->
             <div class="shrink-0 mt-1">
               <a href={item.companyUrl} target="_blank" rel="noopener">
@@ -119,15 +119,15 @@ const timeline = [
     <hr style="border-color: var(--color-border)" class="mb-8" />
 
     <!-- Skills -->
-    <section>
+    <section data-reveal>
       <h2 class="text-lg font-semibold mb-5" style="color: var(--color-text)">技术栈</h2>
       <div class="grid gap-5">
-        {skills.map(group => (
-          <div>
+        {skills.map((group, i) => (
+          <div data-reveal style={`--reveal-delay:${i * 80}ms`}>
             <h3 class="text-xs font-medium uppercase tracking-wider mb-2" style="color: var(--color-muted)">{group.category}</h3>
             <div class="flex flex-wrap gap-2">
               {group.items.map(skill => (
-                <span class="px-3 py-1 rounded-lg text-sm" style="background-color: var(--color-border); color: var(--color-text)">
+                <span class="tag-chip px-3 py-1 rounded-lg text-sm" style="background-color: var(--color-border); color: var(--color-text)">
                   {skill}
                 </span>
               ))}
